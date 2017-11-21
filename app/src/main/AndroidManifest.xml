@@ -9,13 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LocationsActivity">
+        <activity android:name=".activities.LocationsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.VenuesActivity"
+            android:label="@string/title_activity_venues">
+        </activity>
+        <activity
+            android:name=".activities.PhotosActivity"
+            android:label="@string/title_activity_photos">
+        </activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
