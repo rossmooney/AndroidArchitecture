@@ -2,6 +2,7 @@
     <string name="app_name">Explore</string>
     <string name="title_activity_venues">Venues</string>
     <string name="title_activity_photos">Photos</string>
+    <string name="action_bookmark">Bookmark</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

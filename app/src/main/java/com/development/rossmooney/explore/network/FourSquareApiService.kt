@@ -1,6 +1,5 @@
-package com.development.rossmooney.explore.activities
+package com.development.rossmooney.explore.network
 
-import com.development.rossmooney.explore.models.VenueModel
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.http.GET
@@ -15,7 +14,7 @@ import retrofit2.http.Path
 interface FourSquareApiService {
 
     //Explore endpoint
-    //Returns an observable of a list of venues
+    //Returns an observable venue response
     @GET("venues/explore")
     fun venues(@Query("near") near: String,
                @Query("limit") limit: Int): Observable<VenuesResponse.Response>

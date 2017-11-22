@@ -1,7 +1,7 @@
 package com.development.rossmooney.explore.viewModels
 
 import android.arch.lifecycle.ViewModel
-import com.development.rossmooney.explore.activities.RepositoryProvider
+import com.development.rossmooney.explore.repository.RepositoryProvider
 import com.development.rossmooney.explore.models.VenueModel
 import io.reactivex.Observable
 

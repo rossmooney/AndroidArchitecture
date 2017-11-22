@@ -1,4 +1,4 @@
-package com.development.rossmooney.explore.activities
+package com.development.rossmooney.explore.utility
 
 import android.widget.ImageView
 import com.squareup.picasso.Picasso

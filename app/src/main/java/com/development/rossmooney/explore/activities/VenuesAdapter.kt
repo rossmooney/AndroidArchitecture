@@ -1,4 +1,4 @@
-package com.development.rossmooney.explore.activities.com.development.rossmooney.explore
+package com.development.rossmooney.explore.activities
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -27,6 +27,7 @@ class VenuesAdapter constructor(private val clickListener: (VenueModel, Int) -> 
         with(holder.itemView) {
             row_venueName.text = item.name
             row_venueLocation.text = item.location
+            row_venueCategories.text = item.categories.joinToString("," )
         }
 
         //Handle clicks with listener passed in to constructor

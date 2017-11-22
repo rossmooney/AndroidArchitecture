@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.development.rossmooney.explore.R
-import com.development.rossmooney.explore.activities.com.development.rossmooney.explore.VenuesAdapter
 import com.development.rossmooney.explore.viewModels.VenuesViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

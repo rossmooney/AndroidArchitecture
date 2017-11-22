@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="60dp">
+    android:layout_height="80dp">
 
 
     <LinearLayout
@@ -12,7 +12,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/row_thumbnail"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -42,14 +42,26 @@
                 android:id="@+id/row_venueLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Material.Widget.TextView"
                 tools:text="Atlanta, GA" />
 
-            <LinearLayout
-                android:id="@+id/row_venue_categoriesLayout"
+            <TextView
+                android:id="@+id/row_venueCategories"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:text="Category1, Category2" />
+
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/row_bookmarked"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorPrimary"
+            android:visibility="invisible"
+            tools:srcCompat="@drawable/ic_bookmark_white_24dp" />
 
     </LinearLayout>
 

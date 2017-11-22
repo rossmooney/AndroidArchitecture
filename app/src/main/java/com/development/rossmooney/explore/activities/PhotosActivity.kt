@@ -11,8 +11,10 @@ import com.development.rossmooney.explore.R
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import viewModels.PhotosViewModel
+import com.development.rossmooney.explore.viewModels.PhotosViewModel
 import android.support.v7.widget.GridLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 
 
 class PhotosActivity : AppCompatActivity() {
@@ -20,6 +22,7 @@ class PhotosActivity : AppCompatActivity() {
     private val disposable = CompositeDisposable()
     private val lv: RecyclerView by lazy { findViewById<RecyclerView>(R.id.photosList) }
     private var venueId: String? = null
+    private var actionMenu:Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +64,38 @@ class PhotosActivity : AppCompatActivity() {
 
         disposable.clear()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_photos, menu)
+        actionMenu = menu
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem):Boolean {
+        when (item.itemId) {
+            R.id.action_bookmark -> toggleBookmark(item)
+            else -> super.onOptionsItemSelected(item)
+        }
+        return true
+    }
+
+    private fun toggleBookmark(item: MenuItem) {
+        item.setIcon(R.drawable.ic_bookmark_white_24dp)
+    }
+
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.getItemId()) {
+//            R.id.action_bookmark ->
+//                // Bookmark the current venue
+//                // Update the icon to show this is bookmarked
+//                item.setIcon(R.drawable.ic_bookmark_white_24dp)
+////                item.setIcon(R.drawable.ic_bookmark_border_white_24dp
+//            else ->
+//                return super.onOptionsItemSelected(item)
+//        }
+//    }
 
     private fun requestPhotos() {
         //Ensure location isn't null, otherwise return

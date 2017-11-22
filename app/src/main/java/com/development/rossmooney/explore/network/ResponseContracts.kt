@@ -1,12 +1,3 @@
-import android.location.Location
-
-//package com.development.rossmooney.explore.activities
-//
-///**
-// * Created by rossmooney on 11/18/17.
-// */
-//
-
 object VenuesResponse {
     data class Response(val response:ResponseData)
     data class ResponseData(val groups:Array<Groups>, val headerFullLocation:String)
@@ -27,7 +18,8 @@ object VenuesResponse {
     }
 
 
-    data class Category(val id:String, val name:String)
+    data class Category(val id:String, val name:String, val icon:Icon)
+    data class Icon(val prefix:String, val suffix:String)
 }
 
 object ThumbnailPhotos {
