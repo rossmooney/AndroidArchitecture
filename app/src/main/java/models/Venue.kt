@@ -9,3 +9,5 @@ data class VenueModel(val id: String,
                       val location: String,
                       val categories: List<String>) {
 }
+
+data class VenueDisplay(val venue: VenueModel, val bookmarked: Boolean)

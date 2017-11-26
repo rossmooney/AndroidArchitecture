@@ -31,10 +31,10 @@ interface FourSquareApiService {
     companion object Factory {
         fun create(): FourSquareApiService {
             val retrofit = Retrofit.Builder()
-                    .client(customHttpClient())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl("https://api.foursquare.com/v2/")
+                    .client(customHttpClient())
                     .build()
 
             return retrofit.create(FourSquareApiService::class.java);

@@ -3,66 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp">
+    android:layout_height="100dp">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/row_venueThumbnail"
+        android:layout_width="50dp"
+        android:layout_height="64dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:srcCompat="@android:color/black"
+        tools:layout_editor_absoluteY="8dp" />
 
-        <ImageView
-            android:id="@+id/row_thumbnail"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            app:srcCompat="?android:attr/listChoiceIndicatorMultiple" />
+    <ImageView
+        android:id="@+id/row_venueBookmarked"
+        android:layout_width="50dp"
+        android:layout_height="64dp"
+        android:tint="@android:color/holo_orange_light"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@drawable/ic_bookmark_white_24dp"
+        tools:layout_editor_absoluteY="8dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp">
+    <TextView
+        android:id="@+id/row_venueName"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:text="TextView"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp" />
 
-            <TextView
-                android:id="@+id/row_venueName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@android:style/TextAppearance.Material.Headline"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Venue Name" />
+    <TextView
+        android:id="@+id/row_venueLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/row_venueName" />
 
-            <TextView
-                android:id="@+id/row_venueLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@android:style/TextAppearance.Material.Widget.TextView"
-                tools:text="Atlanta, GA" />
-
-            <TextView
-                android:id="@+id/row_venueCategories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Category1, Category2" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/row_bookmarked"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:backgroundTint="@color/colorPrimary"
-            android:visibility="invisible"
-            tools:srcCompat="@drawable/ic_bookmark_white_24dp" />
-
-    </LinearLayout>
-
+    <TextView
+        android:id="@+id/row_venueCategories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/row_venueLocation" />
 </android.support.constraint.ConstraintLayout>

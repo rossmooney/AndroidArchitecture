@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers
 
 
 class VenuesActivity : AppCompatActivity() {
-    private val viewModel: VenuesViewModel by lazy { VenuesViewModel() }
+    private val viewModel: VenuesViewModel by lazy { VenuesViewModel(this) }
     private val disposable = CompositeDisposable()
     private val lv: RecyclerView by lazy { findViewById<RecyclerView>(R.id.venuesList) }
     private var location: String? = null
@@ -30,7 +30,7 @@ class VenuesActivity : AppCompatActivity() {
             //Venue clicked
             Log.d("VenuesActivity", "$item at $index clicked")
 
-            showPhotosScreen(item.id, item.name)
+            showPhotosScreen(item.venue.id, item.venue.name)
         }
 
 

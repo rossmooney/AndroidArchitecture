@@ -1,18 +1,27 @@
 package com.development.rossmooney.explore.viewModels
 
 import android.arch.lifecycle.ViewModel
-import com.development.rossmooney.explore.repository.RepositoryProvider
-import io.reactivex.Observable
+import android.content.Context
+import com.development.rossmooney.explore.network.FourSquareApiService
+import com.development.rossmooney.explore.network.FourSquareNetworkService
+import com.development.rossmooney.explore.repository.PhotoRepository
+import com.development.rossmooney.explore.repository.VenueRepository
 import models.PhotoModel
 
 /**
  * Created by rossmooney on 11/20/17.
  */
-class PhotosViewModel : ViewModel() {
+class PhotosViewModel(private val context: Context) : ViewModel() {
     private var photos = arrayOf<PhotoModel>()
 
-    fun getPhotos(venueId:String, limit: Int = 50): Observable<List<PhotoModel>> {
-        val repository = RepositoryProvider.providePhotoRepository()
-        return repository.getPhotos(venueId, limit)
+    private var venueRepository: VenueRepository = VenueRepository(FourSquareNetworkService(FourSquareApiService.create()), context)
+    private var photoRepository: PhotoRepository = PhotoRepository(FourSquareNetworkService(FourSquareApiService.create()))
+
+    fun getPhotos(venueId:String, limit: Int = 50) = photoRepository.getPhotos(venueId, limit)
+
+    fun toggleVenueBookmark(venueId: String) {
+        venueRepository.updateVenueBookmark(venueId, !venueIsBookmarked(venueId))
     }
+
+    fun venueIsBookmarked(venueId: String) = venueRepository.isBookmarked(venueId)
 }

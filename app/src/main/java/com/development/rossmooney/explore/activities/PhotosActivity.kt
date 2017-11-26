@@ -18,11 +18,10 @@ import android.view.MenuItem
 
 
 class PhotosActivity : AppCompatActivity() {
-    private val viewModel: PhotosViewModel by lazy { PhotosViewModel() }
+    private val viewModel: PhotosViewModel by lazy { PhotosViewModel(this) }
     private val disposable = CompositeDisposable()
     private val lv: RecyclerView by lazy { findViewById<RecyclerView>(R.id.photosList) }
     private var venueId: String? = null
-    private var actionMenu:Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +33,6 @@ class PhotosActivity : AppCompatActivity() {
         lv.adapter = PhotosAdapter() { item, index ->
             //Photo clicked
             Log.d("PhotosActivity", "$item at $index clicked")
-
-//            showPhotosLarge(item.name)
         }
 
 
@@ -68,7 +65,8 @@ class PhotosActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_photos, menu)
-        actionMenu = menu
+
+        updateBookmarkIcon(menu.findItem(R.id.action_bookmark))
         return true
     }
 
@@ -82,20 +80,23 @@ class PhotosActivity : AppCompatActivity() {
     }
 
     private fun toggleBookmark(item: MenuItem) {
-        item.setIcon(R.drawable.ic_bookmark_white_24dp)
+        val venue = venueId
+        if (venue != null) {
+            viewModel.toggleVenueBookmark(venue)
+            updateBookmarkIcon(item)
+        }
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.getItemId()) {
-//            R.id.action_bookmark ->
-//                // Bookmark the current venue
-//                // Update the icon to show this is bookmarked
-//                item.setIcon(R.drawable.ic_bookmark_white_24dp)
-////                item.setIcon(R.drawable.ic_bookmark_border_white_24dp
-//            else ->
-//                return super.onOptionsItemSelected(item)
-//        }
-//    }
+    private fun updateBookmarkIcon(item: MenuItem) {
+        val venue = venueId
+        if (venue != null) {
+            if (viewModel.venueIsBookmarked(venue)) {
+                item.setIcon(R.drawable.ic_bookmark_white_24dp)
+            } else {
+                item.setIcon(R.drawable.ic_bookmark_border_white_24dp)
+            }
+        }
+    }
 
     private fun requestPhotos() {
         //Ensure location isn't null, otherwise return
@@ -108,12 +109,6 @@ class PhotosActivity : AppCompatActivity() {
                 .subscribe({ photos -> (lv.adapter as PhotosAdapter).updateData(photos) },
                         { throwable -> Log.e("PhotosActivity", "Unable to update photos", throwable) }))
     }
-//
-//    private fun showPhotosScreen(venueId:String) {
-//        val intent = Intent(this, PhotosActivity::class.java)
-//        intent.putExtra("venueId", venueId)
-//        startActivity(intent)
-//    }
 }
 
 object Utility {

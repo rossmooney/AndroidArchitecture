@@ -1,5 +1,6 @@
 package com.development.rossmooney.explore.network
 
+import android.util.Log
 import com.development.rossmooney.explore.models.VenueModel
 import io.reactivex.Observable
 import models.PhotoModel
@@ -16,7 +17,7 @@ class FourSquareNetworkService(private val apiService: FourSquareApiService) {
     //Makes the API call and transforms the response to a VenueModel object
     fun venueModels(location: String, limit: Int): Observable<List<VenueModel>> {
         //Call API
-        val response = apiService.venues(near = location, limit = limit)
+        val response = apiService.venues(near = location, limit = limit).doOnNext { Log.d("apiResponse", "Response = $it") }
 
         //Transform stream from API response to stream of list of VenueModels
         return response.map {

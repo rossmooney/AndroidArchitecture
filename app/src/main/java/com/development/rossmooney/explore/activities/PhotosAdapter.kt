@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.development.rossmooney.explore.R
+import com.development.rossmooney.explore.utility.loadUrl
 import kotlinx.android.synthetic.main.photo_item.view.*
 import models.PhotoModel
 
